@@ -3,6 +3,9 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import DefaultTimer from "./DefaultTimer";
 import DefaultRenderer from "./DefaultRenderer";
 import DefaultTouchProcessor from "./DefaultTouchProcessor";
+import {Canvas, Image, useCanvasRef, Circle} from "@shopify/react-native-skia";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const getEntitiesFromProps = props =>
   props.initState ||
@@ -165,12 +168,20 @@ export default class GameEngine extends Component {
         onLayout={this.onLayoutHandler}
       >
         <View
-          style={css.entityContainer}
+         style={css.entityContainer}
           onTouchStart={this.onTouchStartHandler}
           onTouchMove={this.onTouchMoveHandler}
           onTouchEnd={this.onTouchEndHandler}
+          >
+           <Canvas 
+          style={{height:windowHeight,width:windowWidth,backgroundColor:'green',opacity:1}}
+          
+       
         >
+          <Circle cx={0} cy={0} r={100} fill="red" />
+          {this.props.background}
           {this.props.renderer(this.state.entities, this.screen, this.layout)}
+        </Canvas>
         </View>
 
         <View
@@ -197,11 +208,12 @@ GameEngine.defaultProps = {
 
 const css = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   entityContainer: {
     flex: 1,
-    //-- Looks like Android requires bg color here
+    //-- Looks like Android requires bg color here  
+      // 
     //-- to register touches. If we didn't worry about
     //-- 'children' (foreground) components capturing events,
     //-- this whole shenanigan could be avoided..

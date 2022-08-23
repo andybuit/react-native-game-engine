@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/bberak/react-native-game-engine",
   "dependencies": {
+    "@shopify/react-native-skia": "^0.1.142",
     "rxjs": "^6.2.2"
   },
   "peerDependencies": {
