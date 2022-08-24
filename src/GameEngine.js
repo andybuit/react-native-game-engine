@@ -178,7 +178,6 @@ export default class GameEngine extends Component {
           
        
         >
-          <Circle cx={0} cy={0} r={100} fill="red" />
           {this.props.background}
           {this.props.renderer(this.state.entities, this.screen, this.layout)}
         </Canvas>
