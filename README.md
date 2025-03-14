@@ -1,3 +1,16 @@
+## A fork of react-native-game-engine with Skia integrated as the rendering engine
+
+### Why?
+
+- My particular application had severe performance issues on Android in general. Within development mode can sometimes still lag, in my use case works well in production build.
+- This method solved the issue for my use case.
+- Currently using declarative model future plans would be to trial rendering objects using react-native-skia imperative API.
+- Array.map within entity rendering was also replaced with a for loop, with the number of entitis in my use case this probably doesn't make any difference.
+- Additional prop background
+
+
+------------------
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/bberak/react-native-game-engine/master/logo.png" alt="React Native Game Engine" height="120" />
 </p>
